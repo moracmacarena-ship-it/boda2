@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Boda - Casa Yagüe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a2f23;
+            --secondary: #c5a368;
+            --accent: #d4e0d9;
+            --text: #2c2c2c;
+            --bg: #fdfbf7;
+            --white: #ffffff;
+            --shadow: 0 20px 40px rgba(0,0,0,0.08);
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .timeline-content-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('./BODA/641ICLUDSC_2626.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 20px;
+        }
+
+        .hero .date {
+            font-size: 1.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .divider {
+            width: 80px;
+            height: 2px;
+            background: var(--secondary);
+            margin: 0 auto;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            background: var(--accent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -0.5px;
+        }
+
+        .timeline-item {
+            padding: 20px 0;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 60px;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 60px;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            right: -6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            top: 30px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -6px;
+        }
+
+        .time {
+            display: block;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .event-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .event-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
+
+        .music-note {
+            display: block;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+            text-align: center;
+        }
+
+        /* Gallery Collage */
+        .gallery-collage {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .collage-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.4s ease;
+            height: 500px;
+        }
+
+        .collage-item:hover {
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .collage-item.full-width {
+            grid-column: span 2;
+            height: 300px;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .collage-item.full-width img {
+            width: auto;
+            max-width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+        }
+
+        /* Menu Section */
+        .menu-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .menu-card {
+            flex: 1;
+            min-width: 300px;
+            background: var(--white);
+            padding: 50px;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid var(--accent);
+            pointer-events: none;
+        }
+
+        .menu-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-list li {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .menu-list li strong {
+            display: block;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .pairing-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--accent);
+            text-align: center;
+            font-style: italic;
+            color: #555;
+        }
+
+        /* Logistics Overlay */
+        .logistics-bar {
+            background: var(--white);
+            color: var(--primary);
+            padding: 80px 0;
+            border-top: 1px solid var(--accent);
+        }
+
+        .logistics-flex {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .log-item h4 {
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .log-item p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 900px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 100%; left: 0 !important; padding-left: 50px !important; padding-right: 0 !important; text-align: left !important; }
+            .timeline-item::after { left: 14px !important; }
+            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .item-1, .item-2, .item-3, .item-4 { grid-column: span 1; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <p>Nuestra Boda</p>
+        <h1>Silvina & Martin</h1>
+        <div class="date">05 de Diciembre, 2026</div>
+    </section>
+
+    <div class="container">
+        <section id="intro">
+            <div class="section-title">
+                <h2>Bienvenidos a nuestra casa</h2>
+                <div class="divider"></div>
+            </div>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; font-weight: 300; line-height: 1.6; color: #444;">
+                    En este rincón de Trevelin, entre los viñedos y el silencio de la montaña, los esperamos para celebrar su historia. Queremos que vivan una experiencia auténtica y relajada, rodeados de la naturaleza que tanto amamos y con la calidez de siempre.
+                </p>
+            </div>
+        </section>
+
+        <section id="moments">
+            <div class="section-title">
+                <h2>Momentos Compartidos</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="time">17:30</span>
+                    <div class="event-content">
+                        <img src="./BODA/mesa.jpeg" class="timeline-content-img" alt="Bienvenida">
+                        <h3>La Bienvenida</h3>
+                        <p>Recibimiento en los jardines principales. Un primer encuentro con la serenidad y el espíritu del lugar.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">18:00</span>
+                    <div class="event-content">
+                        <img src="./BODA/altar.jpeg" class="timeline-content-img" alt="Ceremonia">
+                        <h3>El Sí, Quiero</h3>
+                        <p>Una unión rodeada de vida y naturaleza. Ambientación orgánica con bancos de madera y flores de estación.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">19:00</span>
+                    <div class="event-content">
+                        <img src="./BODA/brindis.jpeg" class="timeline-content-img" alt="Cóctel">
+                        <h3>Brindis al Atardecer</h3>
+                        <p>Los acordes de violín y violonchelo darán un toque contemporáneo con versiones de <strong>Coldplay</strong> y clásicos modernos.</p>
+                        <span class="music-note">♫ Recomendación: "Viva la Vida" & "Yellow" para el brindis inicial.</span>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">20:00</span>
+                    <div class="event-content">
+                        <img src="./BODA/menu.png" class="timeline-content-img" alt="Cena">
+                        <h3>Nuestros Sabores</h3>
+                        <p>Cena por pasos inspirada en nuestra huerta orgánica. Un viaje gastronómico maridado con la pureza de nuestros vinos de clima frío.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">21:00</span>
+                    <div class="event-content">
+                        <img src="./BODA/copa.jpeg" class="timeline-content-img" alt="Baile">
+                        <h3>Música & Baile</h3>
+                        <p>Apertura de pista con el vals. Continua la celebración acompañados por sus seres más queridos.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">21:30</span>
+                    <div class="event-content">
+                        <img src="./BODA/torta.jpeg" class="timeline-content-img" alt="Mesa Dulce">
+                        <h3>Mesa Dulce & Torta</h3>
+                        <p>Una selección de pastelería y el tradicional corte de torta, acompañados por la elegancia de nuestros espumantes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="time">22:00</span>
+                    <div class="event-content">
+                        <img src="./BODA/copa2.jpeg" class="timeline-content-img" alt="Brindis Final">
+                        <h3>Brindis Final</h3>
+                        <p>El cierre de una noche mágica con nuestros vinos de Casa Yagüe.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visuals">
+            <div class="section-title">
+                <h2>El Escenario</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="gallery-collage">
+                <div class="collage-item">
+                    <img src="./BODA/vinedo.jpg" alt="Viñedo">
+                </div>
+                <div class="collage-item">
+                    <img src="./BODA/salon.jpeg" alt="Salón">
+                </div>
+                <div class="collage-item full-width">
+                    <img src="./BODA/vinos.png" alt="Nuestros Vinos">
+                </div>
+            </div>
+        </section>
+
+        <section id="menu">
+            <div class="section-title">
+                <h2>Propuesta Gastronómica</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="menu-container">
+                <div class="menu-card">
+                    <h3>Recepción</h3>
+                    <ul class="menu-list">
+                        <li>Focaccias artesanales & Dips de la huerta</li>
+                        <li>Tabla de quesos locales, frutas & frutos secos</li>
+                        <li>Bruschettas de temporada & Carpaccio de lomo</li>
+                        <li>Albóndigas caseras & Aceitunas marinadas</li>
+                        <li><strong>Bebidas:</strong> 3 Tragos de Autor, Variedad Sin Alcohol & Vinos de la Bodega</li>
+                    </ul>
+                </div>
+                <div class="menu-card">
+                    <h3>Cena & Brindis</h3>
+                    <ul class="menu-list">
+                        <li><strong>Primer Paso:</strong> Ensalada fresca & Carpaccio de vegetales</li>
+                        <li><strong>Plato Principal:</strong> Carne braseada con papas cuña & vegetales asados</li>
+                        <li><strong>Mesa Dulce:</strong> Variedad de pastelería & Torta de Bodas</li>
+                    </ul>
+                    <div class="pairing-footer">Maridaje con Vinos & Espumantes Casa Yagüe, Café & Té y Bebidas sin alcohol</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="logistics-bar">
+        <div class="container">
+            <div class="logistics-flex">
+                <div class="log-item">
+                    <h4>Invitados</h4>
+                    <p>60 Invitados</p>
+                </div>
+                <div class="log-item">
+                    <h4>Ubicación</h4>
+                    <p>Jardines & Sala de Tasting</p>
+                </div>
+                <div class="log-item">
+                    <h4>Horario</h4>
+                    <p>18:00 — 01:00 hs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 100px 0; text-align: center; background: #fff;">
+        <img src="./logo_casayague.jpeg" alt="Casa Yagüe" style="width: 180px; margin-bottom: 30px;">
+        <p style="color: #999; font-size: 0.9rem; letter-spacing: 2px;">TREVELIN · PATAGONIA · ARGENTINA</p>
+    </footer>
+
+    <script>
+        // Intersection Observer for reveal effect
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
